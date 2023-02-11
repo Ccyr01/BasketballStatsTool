@@ -37,21 +37,19 @@ def display_stats():
     print("Here are your choices:")
     print("A) Display Team Stats")
     print("B) Quit")
-    pdb.set_trace()
     try:
         
         option = input("Enter option: \n")
-        if option == 'b' or 'B':
+        if option == 'b' or option == 'B':
             exit()
-        elif option == 'a' or 'A':
-
+        elif option == 'a' or option == 'A':
+    
             teamName = int(input('''For the Panthers press 1, for the Bandits press 2,
 and for the Warriors press 3\n'''))
-        
-
     except:
         print("Invalid Response")
         exit()
+
 
     displayList =[]
     match teamName:
@@ -87,10 +85,6 @@ and for the Warriors press 3\n'''))
             print()
         case _:
             print("INVALID RESPONSE")
-
-
-
-
         
 if __name__ == '__main__':
     cleaned_data()
