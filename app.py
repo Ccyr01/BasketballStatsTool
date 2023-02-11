@@ -43,11 +43,12 @@ def display_stats():
         if option == 'b' or option == 'B':
             exit()
         elif option == 'a' or option == 'A':
-    
             teamName = int(input('''For the Panthers press 1, for the Bandits press 2,
 and for the Warriors press 3\n'''))
+        else:
+            print("Not an option")
+            exit()
     except:
-        print("Invalid Response")
         exit()
 
 
