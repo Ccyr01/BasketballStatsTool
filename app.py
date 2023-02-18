@@ -20,14 +20,23 @@ def cleaned_data():
             fixed['height'] = int(player['height'].split(" ")[0])
             cleaned.append(fixed)
         return cleaned
-def balance_teams():
+def balance_teams(players):
     playersPerTeam = len(players)/len(teams)
-    playerNo = 1
-    for team in teams:
-        print(team)
-        for player in players:
-            if playerNo < playersPerTeam:
-                print(player['name'])
+    print(len(teams))
+    playerNo =1
+    listPointer = -1
+    listNeeded = [] * len(teams)
+    print(listNeeded)
+
+    for player in players:
+        listPointer+=1
+        while playerNo < playersPerTeam:
+            listNeeded[listPointer].append(player)
+            playerNo+=1
+    print(listNeeded)
+
+    
+    
     
     
         
@@ -38,8 +47,8 @@ def balance_teams():
 
         
 if __name__ == '__main__':
-    cleaned_data()
-    balance_teams()    
+    cleaned_players = cleaned_data()
+    balance_teams(cleaned_players)    
 
 
     
