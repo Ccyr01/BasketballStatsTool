@@ -20,10 +20,15 @@ def cleaned_data():
             fixed['height'] = int(player['height'].split(" ")[0])
             cleaned.append(fixed)
         return cleaned
+#pre: list of dictionaries cleaned version
+#post: Create as many lists as their are teams
+#       and evenly distribute players to each list
+#       List 0 should be team 0 etc... 
 def balance_teams(players):
     playersPerTeam = len(players)/len(teams)
     print(len(players))
     print(len(teams))
+    
     playerNo =0
     listPointer=0
     n = len(teams)
@@ -32,31 +37,38 @@ def balance_teams(players):
     print(listNeeded)
     for player in players:
             if len(listNeeded[listPointer]) < playersPerTeam:
-                print(len(listNeeded[listPointer]))
                 listNeeded[listPointer].append(player)
                 playerNo+=1
             else:
-                print(len(listNeeded[listPointer]))
                 listPointer+=1
                 listNeeded[listPointer].append(player)
-            
-    print(listNeeded)
+    return listNeeded
+def display_menu(listNeeded):
+    listOfPlayersToPrint = []
+    print("\n---MENU---\n")
+    print('''Below is a number next to each team. 
+To find out information on a specific team,
+press the number that is shown to the left of it.
+    ''')
+    for team in teams:
+        print("{}: {}".format(teams.index(team),team))
+    teamSelection = int(input("Select number choice here: \n"))
+    print("\nTeam Name: {}".format(teams[teamSelection]))
+    print("Number of players in team: {}".format(len(listNeeded[teamSelection])))
+    for player in listNeeded[teamSelection]:
+        listOfPlayersToPrint.append(player['name'])
+    print("Players in team:")
+    print(', '.join(listOfPlayersToPrint))
+    print("\n")
 
-    
-    
-    
-    
-        
-            
-
-            
 
 
         
 if __name__ == '__main__':
     cleaned_players = cleaned_data()
     
-    balance_teams(cleaned_players)    
+    listNeeded = balance_teams(cleaned_players) 
+    display_menu(listNeeded)
 
 
     
