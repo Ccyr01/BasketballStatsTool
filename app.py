@@ -23,9 +23,11 @@ def cleaned_data():
 def balance_teams(players):
     playersPerTeam = len(players)/len(teams)
     print(len(teams))
-    playerNo =1
+    playerNo =0
     listPointer = -1
-    listNeeded = [] * len(teams)
+    n = len(teams)
+    listNeeded = [[] for x in range(n)]
+    
     print(listNeeded)
 
     for player in players:
@@ -48,6 +50,7 @@ def balance_teams(players):
         
 if __name__ == '__main__':
     cleaned_players = cleaned_data()
+    
     balance_teams(cleaned_players)    
 
 
