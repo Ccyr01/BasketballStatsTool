@@ -52,14 +52,24 @@ press the number that is shown to the left of it.
     ''')
     for team in teams:
         print("{}: {}".format(teams.index(team),team))
-    teamSelection = int(input("Select number choice here: \n"))
-    print("\nTeam Name: {}".format(teams[teamSelection]))
-    print("Number of players in team: {}".format(len(listNeeded[teamSelection])))
-    for player in listNeeded[teamSelection]:
-        listOfPlayersToPrint.append(player['name'])
-    print("Players in team:")
-    print(', '.join(listOfPlayersToPrint))
-    print("\n")
+    print("{}: Quit".format(len(teams)))
+    try:
+        teamSelection = int(input("Select number choice here: \n"))
+        if(teamSelection == len(teams)):
+            print("quit")
+            quit()
+
+        else:
+            print(len(teams))
+            print("\nTeam Name: {}".format(teams[teamSelection]))
+            print("Number of players in team: {}".format(len(listNeeded[teamSelection])))
+            for player in listNeeded[teamSelection]:
+                listOfPlayersToPrint.append(player['name'])
+            print("Players in team:")
+            print(', '.join(listOfPlayersToPrint))
+            print("\n")
+    except:
+        print("Invalid Input.")
 
 
 
