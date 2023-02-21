@@ -55,10 +55,14 @@ press the number that is shown to the left of it.
     print("{}: Quit".format(len(teams)))
     try:
         teamSelection = int(input("Select number choice here: \n"))
+    except:
+        print("Invalid Input.")
+    else:
         if(teamSelection == len(teams)):
-            print("quit")
+            print("Quitting")
             quit()
-
+        elif teamSelection > len(teams) or teamSelection < 0:
+            print("Invalid input.")
         else:
             print(len(teams))
             print("\nTeam Name: {}".format(teams[teamSelection]))
@@ -68,8 +72,7 @@ press the number that is shown to the left of it.
             print("Players in team:")
             print(', '.join(listOfPlayersToPrint))
             print("\n")
-    except:
-        print("Invalid Input.")
+    
 
 
 
